@@ -1,6 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.sonarqube") version "4.4.1.3373"
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "Deluwuta_App_pruebas")
+        property("sonar.organization", "deluwuta")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
 }
 
 android {
@@ -27,11 +36,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     viewBinding {
@@ -69,4 +78,16 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // Optional -- Mockito framework
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    // Optional -- mockito-kotlin
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    // testImplementation("org.mockito.kotlin:mockito-kotlin:4.2.0")
+
+    androidTestImplementation("androidx.test:runner:1.4.0")
+    // Optional -- UI testing with Espresso
+    //androidTestImplementation "androidx.test:rules:$androidXTestVersion"
+    //androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
 }
